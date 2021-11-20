@@ -1,0 +1,42 @@
+plugins {
+  id 'io.micronaut.application'
+}
+
+group = "com.example"
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(17)
+  }
+}
+
+tasks.withType(JavaCompile).configureEach {
+  options.compilerArgs += '-parameters'
+  options.release.set(17)
+}
+
+tasks.withType(Test).configureEach {
+  useJUnitPlatform()
+}
+
+micronaut {
+  runtime("netty")
+  testRuntime("junit5")
+  processing {
+    incremental(true)
+    annotations("com.example.*")
+  }
+}
+
+dependencies {
+  annotationProcessor("io.micronaut:micronaut-http-validation")
+  implementation("io.micronaut:micronaut-http-client")
+  implementation("io.micronaut:micronaut-runtime")
+  implementation("javax.annotation:javax.annotation-api")
+  implementation("io.micronaut:micronaut-validation")
+  implementation 'org.jetbrains:annotations:23.0.0'
+}
+
+application {
+  mainClass.set("com.example.Application")
+}

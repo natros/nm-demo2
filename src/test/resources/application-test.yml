@@ -1,0 +1,6 @@
+my:
+  api:
+    url: http://localhost
+    auth:
+      username: filipe
+      password: filipe123

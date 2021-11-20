@@ -1,0 +1,17 @@
+pluginManagement {
+  plugins {
+    id 'io.micronaut.application' version '2.0.8'
+  }
+  repositories {
+    mavenCentral()
+    gradlePluginPortal()
+  }
+}
+
+dependencyResolutionManagement {
+  repositories {
+    mavenCentral()
+  }
+}
+
+rootProject.name="demo"
